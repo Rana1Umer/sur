@@ -1,0 +1,25 @@
+<h1>Show method</h1>
+
+<p>
+	<strong>Name:</strong>
+	<%= @survey.name %>
+</p>
+<p>
+	<strong>Gender:</strong>
+	<%= @survey.gender %>
+</p>
+<p>
+	<strong>Province:</strong>
+	<%= @survey.province %>
+</p>
+<p>
+	<strong>Interest:</strong>
+	<%= @survey.interest %>
+</p>
+<p>
+	<strong>Biography:</strong>
+	<%= @survey.biography %>
+</p>
+
+<%= link_to 'Click for Edit this form', edit_survey_path(@survey) %><br>
+<%= link_to 'Click to go back', surveys_path %>

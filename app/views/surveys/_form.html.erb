@@ -1,0 +1,61 @@
+<%= form_with(model: @survey, local: true) do |form| %>
+<p>
+	<%= form.label :name %>:
+	<%= form.text_field :name %>
+</p>
+
+<p>
+	<%= form.label :gender %>:
+
+	<%= form.radio_button :gender, 'Male' %>
+	<%= form.label :gender, 'Male' %>
+
+	<%= form.radio_button :gender, 'Female' %>
+	<%= form.label :gender, 'Female' %>
+</p>
+
+<p>
+	<%= form.label :province %>:
+	<%= form.select :province, ['Punjab', 'Sindh', 'Balochistan', 'Khyber Pakhtunkhwa'] %>
+</p>
+
+<p>
+	<%= form.label :interest %>:
+
+	<%= form.check_box :interest, {:multiple => true}, 'Music', nil %>
+	<%= form.label :Music %>
+	<%= form.check_box :interest, {:multiple => true}, 'Art', nil %>
+	<%= form.label :Art %>
+	<%= form.check_box :interest, {:multiple => true}, 'Religion', nil %>
+	<%= form.label :Religion %>
+	<%= form.check_box :interest, {:multiple => true}, 'Movies', nil %>
+	<%= form.label :Movies %>
+	<%= form.check_box :interest, {:multiple => true}, 'Politics', nil %>
+	<%= form.label :Politics %>
+	<%= form.check_box :interest, {:multiple => true}, 'Science', nil %>
+	<%= form.label :Science %>
+	<%= form.check_box :interest, {:multiple => true}, 'Math', nil %>
+	<%= form.label :Math %>
+</p>
+
+<p>
+	<%= form.label :user %>:    
+	<%= form.select :user, User.all.collect(&:first_name) %>
+</p>
+<p>
+	<%= form.label :user_role %>:
+	<%= form.select :userrole, ['visitor', 'admin'] %>
+
+</p>
+
+
+<p>
+	<%= form.label :biography %>:
+	<%= form.text_area :biography %>
+</p>
+
+<p>
+	<%= form.submit %>
+</p>
+
+<%end%>

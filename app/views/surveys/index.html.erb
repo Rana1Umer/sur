@@ -1,0 +1,30 @@
+<h1> Index Page</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Gender</th>
+		<th>Province</th>
+		<th>Interest</th>
+		<th>Biography</th>
+	</tr>
+
+	<% @surveys.each do |survey|%>
+	<tr>
+		<td><%= survey.name %></td>
+		<td><%= survey.gender %></td>
+		<td><%= survey.province %></td>
+		<td><%= survey.interest %></td>
+		<td><%= survey.biography %></td>
+		<td><%= link_to 'Edit', edit_survey_path(survey) %></td>
+		<td><%= link_to 'Update', survey_path(survey) %></td>
+		<td><%= link_to 'Delete', survey_path(survey),
+							 method: :delete,
+							  data: {confirm: 'Are you mad?'} %></td>					  
+	</tr>
+	<%end%>
+</table>
+
+<%= link_to 'New Form', new_survey_path %><br>
+<%= link_to 'Logout', destroy_user_session_path %>
+
