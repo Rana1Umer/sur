@@ -1,5 +1,7 @@
 class SurveysController < ApplicationController
 
+	before_action :check_user_is_logged_in?
+
 	def index
 		@surveys = Survey.all
 	end
@@ -10,6 +12,8 @@ class SurveysController < ApplicationController
 
 	def create
 		@survey = Survey.new(params_survey)
+		@survey.user = current_user
+		
 		if @survey.save
 			redirect_to @survey
 		else
@@ -42,6 +46,11 @@ class SurveysController < ApplicationController
 	end
 
 	private
+
+	def check_user_is_logged_in?
+		authenticate_user! if current_user.nil?
+	end
+
 	def params_survey
 		params.require(:survey).permit(:name, :biography, :gender, :province, :interest =>[])
 	end

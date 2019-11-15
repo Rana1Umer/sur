@@ -13,6 +13,11 @@
     <%= f.text_field :last_name %>
   </div>
 
+    <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role, ['Visitor', 'Admin'] %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

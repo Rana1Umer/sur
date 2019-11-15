@@ -38,16 +38,10 @@
 	<%= form.label :Math %>
 </p>
 
-<p>
-	<%= form.label :user %>:    
-	<%= form.select :user, User.all.collect(&:first_name) %>
-</p>
-<p>
-	<%= form.label :user_role %>:
-	<%= form.select :userrole, ['visitor', 'admin'] %>
-
-</p>
-
+<!-- <p>
+	<%#= form.label :user %>:    
+	<%#= form.select :user, User.all.collect(&:first_name) %>
+</p> -->
 
 <p>
 	<%= form.label :biography %>:

@@ -11,7 +11,7 @@
 
 	<% @surveys.each do |survey|%>
 	<tr>
-		<td><%= survey.name %></td>
+		<td><%= survey.user.full_name %></td>
 		<td><%= survey.gender %></td>
 		<td><%= survey.province %></td>
 		<td><%= survey.interest %></td>
@@ -26,5 +26,5 @@
 </table>
 
 <%= link_to 'New Form', new_survey_path %><br>
-<%= link_to 'Logout', destroy_user_session_path %>
+<%= link_to 'Logout', destroy_user_session_path(current_user), method: :delete, data: {confirm: 'Are you mad?'}  %>
 

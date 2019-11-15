@@ -1,7 +1,9 @@
 class User < ApplicationRecord
 	has_many :survays
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+
+    def full_name
+    	first_name + last_name
+    end
 end
