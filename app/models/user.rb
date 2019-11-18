@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	has_many :survays
+	has_many :surveys
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 

@@ -3,7 +3,11 @@ class SurveysController < ApplicationController
 	before_action :check_user_is_logged_in?
 
 	def index
-		@surveys = Survey.all
+		if current_user.role == "admin"
+			@surveys = Survey.all
+		else
+			@surveys = current_user.surveys
+		end
 	end
 
 	def new
@@ -12,7 +16,7 @@ class SurveysController < ApplicationController
 
 	def create
 		@survey = Survey.new(params_survey)
-		@survey.user = current_user
+		# @survey.user = current_user
 		
 		if @survey.save
 			redirect_to @survey
