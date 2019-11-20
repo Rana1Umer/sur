@@ -3,27 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :authenticate_user!
-  before_filter :is_admin, only: [:new, :create]
 
-  def new
-    super
-  end
-    
-  end
-  def create
-    super
-  end
-
-  private
-  def is_admin?
-  if user_signed_in? # if user signed
-   if current_user.role == "admin" # if adminstrator return true
-     true
-   else
-     redirect_to some_path
-   end
- end
 
   # GET /resource/sign_up
   # def new

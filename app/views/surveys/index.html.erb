@@ -2,6 +2,7 @@
 
 <table>
 	<tr>
+		<th>ID</th>
 		<th>Name</th>
 		<th>Gender</th>
 		<th>Province</th>
@@ -10,10 +11,11 @@
 	</tr>
 
 	<% @surveys.each do |survey|%>
-	<tr>
-<!-- 		<td><%= survey.user.full_name %></td>
- -->
- 		<td><%= survey.name %></td>
+	<tr>		
+
+		<!-- <td><#%= survey.user.full_name %></td>  -->
+		<td><%= survey.id %></td>
+		<td><%= survey.name %></td>
 		<td><%= survey.gender %></td>
 		<td><%= survey.province %></td>
 		<td><%= survey.interest %></td>
@@ -21,14 +23,14 @@
 		<td><%= link_to 'Edit', edit_survey_path(survey) %></td>
 		<td><%= link_to 'Update', survey_path(survey) %></td>
 		<td><%= link_to 'Delete', survey_path(survey),
-							 method: :delete,
-							  data: {confirm: 'Are you mad?'} %></td>					  
+		method: :delete,
+		data: {confirm: 'Are you mad?'} %></td>					  
 	</tr>
 	<%end%>
 </table>
 
 <%= link_to 'New Form', new_survey_path %><br>
-<%= link_to 'Logout', destroy_user_session_path(current_user), method: :delete, data: {confirm: 'Are you mad?'}  %><br>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}  %><br>
 <%= link_to 'New sign_up', new_user_registration_path %><br>
 
 
