@@ -1,0 +1,29 @@
+<h1>Index Method</h1>
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Role</th>
+		<th>Email Address</th>
+		<th>Edit</th>
+		<th>Update</th>
+		<th>Delete</th>
+	</tr>
+
+	<% @user.each do |u| %>
+	<tr>
+		<td><%= u.id %></td>
+		<td><%= u.first_name %></td>
+		<td><%= u.last_name %></td>
+		<td><%= u.role %></td>
+		<td><%= u.email %></td>
+		<td><%= link_to 'Edit', edit_user_path(u) %></td>
+		<td><%= link_to 'Update', user_path(u) %></td>
+		<td><%= link_to 'Delete', user_path(u), method: :delete, data:{ confirm: 'Are you sure'} %></td>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Create New User', new_user_path %>
