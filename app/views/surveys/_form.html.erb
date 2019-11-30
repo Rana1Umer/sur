@@ -1,5 +1,14 @@
 <%= form_with(model: @survey, local: true) do |form| %>
 <p>
+	<%= form.label :status %>:    
+	<%= form.select :status, Survey.valid_statuses %>
+</p>
+<p>
+	<%= form.label :due_date %><br>
+	<%= form.date_select :due_date %>
+</p>
+
+<p>
 	<%= form.label :name %>:
 	<%= form.text_field :name %>
 </p>
@@ -39,7 +48,7 @@
 </p>
 
  <p>
-	<%= form.label :user %>:    
+	<%= form.label :Assign_user %>:    
 	<%= form.select :user, User.all.collect(&:first_name) %>
 </p>
 
@@ -49,7 +58,7 @@
 </p>
 
 <p>
-	<%= form.submit %>
+	<%= form.submit ({:class => 'btn btn-primary'}) %>
 </p>
 
 <%end%>

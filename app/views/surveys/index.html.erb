@@ -8,7 +8,10 @@
 		<th>Province</th>
 		<th>Interest</th>
 		<th>Biography</th>
+		<th>Due_date</th>
+		<th>Status</th>
 	</tr>
+
 
 	<% @surveys.each do |survey|%>
 	<tr>		
@@ -20,6 +23,8 @@
 		<td><%= survey.province %></td>
 		<td><%= survey.interest %></td>
 		<td><%= survey.biography %></td>
+		<td><%= survey.due_date %></td>
+		<td><%= survey.status %></td>
 		<td><%= link_to 'Edit', edit_survey_path(survey) %></td>
 		<td><%= link_to 'Update', survey_path(survey) %></td>
 		<td><%= link_to 'Delete', survey_path(survey),

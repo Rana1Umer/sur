@@ -55,7 +55,11 @@ class SurveysController < ApplicationController
 		authenticate_user! if current_user.nil?
 	end
 
+	def self.not_expired
+		where('created_at >= ?', Date.current - 30.day)
+	end
+
 	def params_survey
-		params.require(:survey).permit(:name, :biography, :gender, :province, :interest =>[])
+		params.require(:survey).permit(:name, :biography, :gender, :province, :status, :due_date, :interest =>[])
 	end
 end
