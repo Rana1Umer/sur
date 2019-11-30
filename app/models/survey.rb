@@ -25,3 +25,5 @@ class Survey < ApplicationRecord
 		STATUSES[status]
 	end
 end
+
+
