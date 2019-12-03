@@ -1,11 +1,13 @@
 <%= form_with(model: @survey, local: true) do |form| %>
-<p>
-	<%= form.label :status %>:    
-	<%= form.select :status, Survey.valid_statuses %>
-</p>
+
 <p>
 	<%= form.label :due_date %><br>
 	<%= form.date_select :due_date %>
+</p>
+
+<p>
+	<%= form.label :Assign_user %>:    
+	<%= form.select :user, User.all.collect(&:full_name) %>
 </p>
 
 <p>
@@ -45,11 +47,6 @@
 	<%= form.label :Science %>
 	<%= form.check_box :interest, {:multiple => true}, 'Math', nil %>
 	<%= form.label :Math %>
-</p>
-
- <p>
-	<%= form.label :Assign_user %>:    
-	<%= form.select :user, User.all.collect(&:first_name) %>
 </p>
 
 <p>

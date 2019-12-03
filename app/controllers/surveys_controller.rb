@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
 
 	def create
 		@survey = Survey.new(params_survey)
-		# @survey.user = current_user
+		@survey.user = current_user
 		
 		if @survey.save
 			redirect_to @survey
@@ -53,10 +53,6 @@ class SurveysController < ApplicationController
 
 	def check_user_is_logged_in?
 		authenticate_user! if current_user.nil?
-	end
-
-	def self.not_expired
-		where('created_at >= ?', Date.current - 30.day)
 	end
 
 	def params_survey
