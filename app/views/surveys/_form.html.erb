@@ -1,5 +1,7 @@
 <%= form_with(model: @survey, local: true) do |form| %>
 
+<% if current_user.role == "admin" %>
+
 <p>
 	<%= form.label :due_date %><br>
 	<%= form.date_select :due_date %>
@@ -7,8 +9,10 @@
 
 <p>
 	<%= form.label :Assign_user %>:    
-	<%= form.select :user, User.all.collect(&:full_name) %>
+	<%= form.select :user_id, options_from_collection_for_select(User.all, "id", "first_name") %>
 </p>
+
+<% else %>
 
 <p>
 	<%= form.label :name %>:
@@ -27,7 +31,7 @@
 
 <p>
 	<%= form.label :province %>:
-	<%= form.select :province, ['Punjab', 'Sindh', 'Balochistan', 'Khyber Pakhtunkhwa'] %>
+	<%= form.select :province, ['select','Punjab', 'Sindh', 'Balochistan', 'Khyber Pakhtunkhwa'] %>
 </p>
 
 <p>
@@ -53,6 +57,7 @@
 	<%= form.label :biography %>:
 	<%= form.text_area :biography %>
 </p>
+<%end%>
 
 <p>
 	<%= form.submit ({:class => 'btn btn-primary'}) %>

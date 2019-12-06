@@ -7,7 +7,7 @@ class Survey < ApplicationRecord
 	STATUSES = {
 		'pending'     => 'pending',
 		'completed'   => 'completed',
-		'expired'      => 'expired'
+		'expired'     => 'expired'
 	}
 
 	def self.valid_statuses
@@ -29,6 +29,7 @@ class Survey < ApplicationRecord
 			self.status = 'expired'
 		end
 	end
+
 
 	# validates :status, inclusion: { in: valid_statuses },
 	# presence: true

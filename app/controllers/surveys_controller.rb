@@ -16,9 +16,9 @@ class SurveysController < ApplicationController
 
 	def create
 		@survey = Survey.new(params_survey)
-		@survey.user = current_user
+		# @survey.user = current_user
 		
-		if @survey.save
+		if @survey.save!
 			redirect_to @survey
 		else
 			render 'new'
@@ -35,27 +35,31 @@ class SurveysController < ApplicationController
 
 	def update
 		@survey = Survey.find(params[:id])
-		if @survey.update(params_survey)
-			redirect_to @survey
+		if  status == "expired"
+			redirect_to surveys_path, error: "after expired user can't edit form"
 		else
-			render 'edit'
+			if @survey.update(params_survey)
+				redirect_to @survey
+			else
+				render 'new'
+			end
 		end
 	end
 
-	def destroy
-		@survey = Survey.find(params[:id])
-		@survey.destroy
+		def destroy
+			@survey = Survey.find(params[:id])
+			@survey.destroy
 
-		redirect_to surveys_path
+			redirect_to surveys_path
+		end
+
+		private
+
+		def check_user_is_logged_in?
+			authenticate_user! if current_user.nil?
+		end
+
+		def params_survey
+			params.require(:survey).permit(:name, :biography, :gender, :province, :status, :due_date, :user_id, :interest =>[])
+		end
 	end
-
-	private
-
-	def check_user_is_logged_in?
-		authenticate_user! if current_user.nil?
-	end
-
-	def params_survey
-		params.require(:survey).permit(:name, :biography, :gender, :province, :status, :due_date, :interest =>[])
-	end
-end
