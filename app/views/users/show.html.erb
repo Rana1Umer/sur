@@ -8,6 +8,11 @@
 	<strong>Last Name</strong>:
 	<%= @user.last_name %>
 </p>
+
+<p>
+	<strong>Avatar</strong>:
+	<%= image_tag(@user.avatar.url) %>
+</p>
 <p>
 	<strong>Role</strong>:
 	<%= @user.role %>

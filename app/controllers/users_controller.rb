@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authorize_admin
+	 # before_action :authorize_admin
 	
 	def index
 		@user = User.all
@@ -46,15 +46,15 @@ class UsersController < ApplicationController
 
 	private
 
-	def authorize_admin
-		redirect_to root_path, alert: 'Access Denied' unless current_user.role=="admin"
+	# def authorize_admin
+	# 	redirect_to root_path, alert: 'Access Denied' unless current_user.role=="admin"
 		
-		if current_user.role == "visitor"
-			return
-		end
-	end
+	# 	if current_user.role == "visitor"
+	# 		return
+	# 	end
+	# end
 
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :role, :email, :password, :password_confirmation)
+		params.require(:user).permit(:first_name, :last_name, :role, :email, :password, :password_confirmation, :avatar)
 	end
 end
