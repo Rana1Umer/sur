@@ -18,8 +18,8 @@
 		<td><%= u.id %></td>
 		<td><%= u.first_name %></td>
 		<td><%= u.last_name %></td>
-		<td><%= image_tag(u.avatar.url) if u.avatar?%></td>
-		<td><%= u.role %></td>
+		<td><%= image_tag(u.avatar.url) if u.avatar? %></td>
+		<td class="red"><%= u.role %></td>
 		<td><%= u.email %></td>
 		<td><%= link_to 'Edit', edit_user_path(u) %></td>
 		<td><%= link_to 'Update', user_path(u) %></td>
