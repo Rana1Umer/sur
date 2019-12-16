@@ -1,10 +1,10 @@
 class SurveysController < ApplicationController
 
-	before_action :check_user_is_logged_in?
+	 before_action :check_user_is_logged_in?
 
 	def index
 		if current_user.role == "admin"
-			@surveys = Survey.all
+			@surveys = Survey.paginate(page: params[:page])
 		else
 			@surveys = current_user.surveys
 		end
@@ -46,20 +46,20 @@ class SurveysController < ApplicationController
 		end
 	end
 
-		def destroy
-			@survey = Survey.find(params[:id])
-			@survey.destroy
+	def destroy
+		@survey = Survey.find(params[:id])
+		@survey.destroy
 
-			redirect_to surveys_path
-		end
-
-		private
-
-		def check_user_is_logged_in?
-			authenticate_user! if current_user.nil?
-		end
-
-		def params_survey
-			params.require(:survey).permit(:name, :biography, :gender, :province, :status, :due_date, :user_id, :interest =>[])
-		end
+		redirect_to surveys_path
 	end
+
+	private
+	def check_user_is_logged_in?
+		authenticate_user! if current_user.nil?
+	end
+
+	def params_survey
+		params.require(:survey).permit(:name, :biography, :gender, :province, :status, :due_date, :user_id, :interest =>[])
+	end
+end
+

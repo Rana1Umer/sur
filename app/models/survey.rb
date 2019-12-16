@@ -2,6 +2,7 @@ class Survey < ApplicationRecord
 	before_create :set_status_pending
 	before_save :check_status
 	belongs_to :user
+	self.per_page = 5
 
 
 	STATUSES = {

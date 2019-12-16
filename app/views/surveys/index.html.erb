@@ -39,3 +39,10 @@
 <%= link_to 'New sign_up only for admin', new_user_path %><br>
 
 
+<div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @surveys %>
+    </div>
+    <%= will_paginate @surveys, :container => false %>
+</div>
+

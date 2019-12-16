@@ -298,6 +298,8 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   config.scoped_views = true
 
-  config.omniauth :facebook, '548854982346159', 'ccd7bfbd0c597f8ead0a332cdcb3c420', token_params: { parse: :json }
+  config.omniauth :facebook, "548854982346159", "ccd7bfbd0c597f8ead0a332cdcb3c420", scope: 'public_profile,email',
+                info_fields: 'email,first_name,last_name,gender,birthday,location,picture'
+  # config.omniauth :facebook, '548854982346159', 'ccd7bfbd0c597f8ead0a332cdcb3c420', token_params: { parse: :json }
   # config.omniauth :google_oauth2, '325735128490-mtnt1uip1vcm62b9m9q87367vonado8c.apps.googleusercontent.com', 'TtArTKsa5PgldaNMQeFfSg1N', {}
 end
